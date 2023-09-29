@@ -69,8 +69,7 @@ setInterval(async () => {
 
 // Afficher des infos basiques
 fastify.all("/", async (req, res) => {
-	// TODO: on modifiera l'URL ici
-	return res.redirect("https://github.com/Freebox-Tools")
+	return res.redirect("https://github.com/Freebox-Tools/api-notifier")
 })
 
 // Associer une Freebox à un compte Telegram

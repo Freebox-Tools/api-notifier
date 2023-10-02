@@ -65,7 +65,7 @@ async function deleteExpiredUniquecode(){
 deleteExpiredUniquecode()
 setInterval(async () => {
 	deleteExpiredUniquecode()
-}, 1000 * 60 * 60 * 1)
+}, 1000 * 60 * 60) // toutes les heures
 
 // Afficher des infos basiques
 fastify.all("/", async (req, res) => {

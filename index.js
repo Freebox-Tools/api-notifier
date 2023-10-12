@@ -1,14 +1,11 @@
 // Importer quelques librairies
 const fastify = require("fastify")({ logger: { level: "silent" } })
-// const { FreeboxClient } = require("../FreeboxWrapper/index.js")
 const { FreeboxClient } = require("freebox-wrapper")
 require("dotenv").config()
 
 // Supabase
 var { createClient } = require("@supabase/supabase-js")
 var supabase = createClient(process.env.SUPABASE_LINK, process.env.SUPABASE_PUBLIC_KEY)
-// TODO: on précisera dans Le README qu'il faut pas leak la SUPABASE_PUBLIC_KEY mm si le nom indique qu'elle est publique, c'est pas vrm le cas
-// TODO: on précisera aussi dans le README d'activer les RLS (voir celle déjà définit dans la base de données)
 
 // Générer un code unique
 async function generateUniqueCode(i = 0){
@@ -67,7 +64,7 @@ setInterval(async () => {
 	deleteExpiredUniquecode()
 }, 1000 * 60 * 60) // toutes les heures
 
-// Afficher des infos basiques
+// Rediriger vers la docs
 fastify.all("/", async (req, res) => {
 	return res.redirect("https://github.com/Freebox-Tools/api-notifier")
 })

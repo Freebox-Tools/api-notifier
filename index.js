@@ -114,6 +114,28 @@ fastify.post("/associateBoxWithTelegram", async (req, res) => {
 	return { success: true, code }
 })
 
+// Afficher le status des différents services
+fastify.get("/status", async (req, res) => {
+	// Obtenir les données depuis Supabase
+	var { data, error } = await supabase.from("status").select("*")
+	if(error) throw { statusCode: 500, error: "Failed getting status", message: "Une erreur est survenue lors de la récupération des informations de status. Veuillez réessayer plus tard.", "discord": "down", "telegram": "down" }
+
+	// Obtenir l'écart de temps entre maintenant et chaque date enregistrée
+	var now = Date.now()
+	var toReturn = {}
+	data.forEach(d => {
+		d.difference = now - new Date(d.lastSeen).getTime()
+		d.down = d.difference > 1000 * 60 * 2 // 2 minutes (car les plateformes mettent à jour toutes les 1min30)
+		toReturn[d.name] = d.down ? "down" : "up"
+	})
+
+	// On retourne les données au format "plateforme": "up/down"
+	return {
+		data,
+		...toReturn
+	}
+})
+
 // Démarrer le serveur
 fastify.listen({ port: process.env.PORT || 3000 }, (err) => {
 	if(err) fastify.log.error(err), process.exit(1)

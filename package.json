@@ -1,6 +1,7 @@
 {
+	"private": true,
 	"name": "freebox-notifier-api",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "L'API permettant d'associer une Freebox au bot Call Notifier",
 	"main": "index.js",
 	"scripts": {

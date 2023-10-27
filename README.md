@@ -24,7 +24,7 @@ fbx-associate https://url-de-votre-api.com
 
 > Cette base de donnée est commune pour le bot Telegram et l'API. Si vous avez déjà créer un projet Supabase, vous pouvez passer cette étape.
 
-> Les instructions sont [disponibles ici](https://github.com/el2zay/wikis/wiki/H%C3%A9berger-soi%E2%80%90m%C3%AAme#configurer-la-base-de-donn%C3%A9es).
+> Les instructions sont [disponibles ici](https://github.com/Freebox-Tools/telegram-call-notifier/wiki/H%C3%A9berger-soi%E2%80%90m%C3%AAme#configurer-la-base-de-donn%C3%A9es).
 
 ### Installation
 
